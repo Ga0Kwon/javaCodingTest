@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author kwonk
+ *
+ */
+module javaCodingTest {
+}
