@@ -10,18 +10,15 @@ public class Main {
         int N = Integer.parseInt(bf.readLine());
         StringTokenizer token ;
 
-        int [] result = new int[N];
+        StringBuilder builder = new StringBuilder();
         for(int i = 0; i < N; i++){
-            token = new StringTokenizer(bf.readLine()); //입력을 새로 받아야하니까 반복문 돌때마다 다시 new 연산자를 사용한다.
-            int a = Integer.parseInt(token.nextToken());
-            int b = Integer.parseInt(token.nextToken());
-            result[i] = a+b;
+            token = new StringTokenizer(bf.readLine());
+            builder.append(Integer.parseInt(token.nextToken())+ Integer.parseInt(token.nextToken()));
+            builder.append("\n");
         }
 
         bf.close();
-        
-        for(int i = 0; i < N; i++){
-            System.out.println(result[i]);
-        }
+
+        System.out.println(builder);
     }
 }
