@@ -8,6 +8,8 @@ public class Main {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer token = new StringTokenizer(bf.readLine());
 
+        bf.close();
+        
         int a = Integer.parseInt(token.nextToken());
         int b = Integer.parseInt(token.nextToken());
 
