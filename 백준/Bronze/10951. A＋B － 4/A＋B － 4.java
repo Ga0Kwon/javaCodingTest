@@ -1,34 +1,22 @@
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.IOException;
-import java.util.Scanner;
+import java.io.*;
 import java.util.StringTokenizer;
 
-public class Main{
-    public static void main(String[] args) throws IOException{
-        BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st;
-        String str;
-        while( (str = bufferedReader.readLine()) != null){
-            st = new StringTokenizer(str, " ");
-            int a = Integer.parseInt(st.nextToken());
-            int b = Integer.parseInt(st.nextToken());
-            bufferedWriter.write(a+b + "\n");
-        }
-        bufferedReader.close();
-        bufferedWriter.flush();
-        bufferedWriter.close();
-     /*   Scanner sc = new Scanner(System.in);
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
 
-        while (sc.hasNextInt()){
-            int A = sc.nextInt();
-            int B = sc.nextInt();
+        String st ;
 
-            System.out.println(A+B);
+        while((st = br.readLine()) != null){
+           int  a = st.charAt(0) - '0'; //아스키코드값으로 계산
+           int b = st.charAt(2) - '0'; //가운데는 공백이 있으니까 2번째 문자를 받는다.
+
+            sb.append(a+b+"\n");
         }
-        sc.close();*/
+        System.out.println(sb);
+        
+        br.close();
+
     }
 }
