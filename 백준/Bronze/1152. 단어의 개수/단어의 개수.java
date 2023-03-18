@@ -1,14 +1,25 @@
 import java.io.*;
-import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int count = 0;
+        int prev = ' ';
 
-        StringTokenizer token = new StringTokenizer(br.readLine(), " "); //공백으로 분리
-        br.close();
-
-        System.out.println(token.countTokens()); //분리한 걸로 몇개인지 count를 반환
+        while(true){
+                int ch = System.in.read();
+                if(ch == '\n') { //입력값이 줄바꿈이면
+                    //이전 글자가 공백이 아니면
+                    if (prev != ' ') count++;
+                    break; //줄바꿈을 한거니까 while문을 나온다.
+                }
+                if(ch == ' '){ //입력값이 공백이면
+                    if(prev != ' '){//이전 글자가 공백이 아니면
+                        count++;
+                    }
+                }
+                prev = ch; //pre를 이전 단어로 바꿔준다.
+            }
+        System.out.println(count);
+        }
 
     }
-}
