@@ -12,32 +12,26 @@ public class Main {
             StringTokenizer token = new StringTokenizer(br.readLine());
             int N = Integer.parseInt(token.nextToken()); //줄마다 사람 수
             int [] students = new int[N];
+            double total = 0;
+
             for(int j = 0;  j < N; j++){
                 students[j] = Integer.parseInt(token.nextToken());
+                total += students[j];
             }
-            String str = String.format("%.3f", getOverAvg(students));
+
+            double avg = total/N;
+
+            int count = 0;
+            for(int j = 0; j < N; j++){
+                if(students[j] > avg){
+                    count++;
+                }
+            }
+            String str = String.format("%.3f", ((double)count/(double)N)*100);
+            
             sb.append(str+"%\n");
         }
         br.close();
         System.out.println(sb);
-    }
-
-    static double getAvg(int [] array){
-        double total = 0;
-        for(int i = 0; i < array.length; i++){
-            total += array[i];
-        }
-        return total/array.length;
-    }
-
-    static double getOverAvg(int [] array){
-        double avg = getAvg(array);
-        double overStudent = 0;
-        for(int i = 0; i < array.length; i++){
-            if(avg < array[i]){
-                overStudent++;
-            }
-        }
-        return (overStudent/ array.length)*100;
     }
 }
