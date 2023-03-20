@@ -7,15 +7,13 @@ public class Main {
 
         int[] array = new int[26]; //영문자가 26개
 
-        String str = br.readLine();
-        br.close();
-        for(int i = 0; i < str.length(); i++){
-            if( 'a' <= str.charAt(i) && str.charAt(i) <= 'z'){ //소문자라면
-                array[str.charAt(i)-97]++; //아스키코드로 소문자 a는 97이다.
-            }else{ //대문자라면
-                array[str.charAt(i)-65]++; //아스키코드로 대문자 A는 65이다.
-            }
+        for(int i = System.in.read(); i >= 'A'; i = System.in.read()){
+            if(i > 'Z') //대문자 Z보다 크다는 것은 소문자라는 것
+                array[i - 'a']++;
+            else
+                array[i - 'A']++; //Z보다 작다는 것은 대문자라는 것
         }
+        
         int count = -1; //배열에 최솟값이 0이기 때문에 -1로 설정
         char result = '?'; // 가장 많았던 문자를 출력하거나 ?을 출력할때 결과 값
 
