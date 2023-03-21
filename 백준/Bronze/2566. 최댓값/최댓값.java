@@ -32,8 +32,6 @@ public class Main {
                 }
             }
         }
-
-        br.close();
         System.out.println(max + "\n" + (row+1) + " " + (col+1) + " ");
     }
 }
