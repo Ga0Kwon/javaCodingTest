@@ -15,8 +15,6 @@ public class Main {
                 break;
             }
 
-            sb.append(n);
-
             int[] array = new int[n];
 
             int sum = 0;
@@ -31,11 +29,11 @@ public class Main {
 
             //완전수가 아닐 경우
             if (sum != n) { //다른 것과 구분하려면 앞으로 빼는 것이 나음!
-                sb.append(" is NOT perfect. \n");
+                sb.append(n+ " is NOT perfect. \n");
                 continue; //완전수가 아니기때문에 밑의 코드는 수행 X
             }
 
-            sb.append(" = 1"); //1의 약수는 차피 무조건 추가  이기 때문에
+            sb.append(n + " = 1"); //1의 약수는 차피 무조건 추가  이기 때문에
 
             for(int i = 1; i <= n; i++){ //약수의 최대 몇개 인지 알고 있기 때문에 index만큼 반복문
                 if(array[i-1] != 0 && array[i-1] != 1){ //숫자 출력 부분 1출력은 생략한다.
