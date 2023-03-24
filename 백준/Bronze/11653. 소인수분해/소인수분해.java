@@ -9,18 +9,15 @@ public class Main {
         int N = Integer.parseInt(br.readLine());
         StringBuilder sb = new StringBuilder();
         br.close();
+
         if(N == 1){
             return;
         }
 
         for(int i = 2; i <= N; i++){
-            while(true){
-                if(N%i == 0){
-                    N /= i;
-                    sb.append(i + "\n");
-                }else{
-                    break;
-                }
+            while(N%i == 0){
+                N /= i;
+                sb.append(i + "\n");
             }
         }
         System.out.println(sb);
