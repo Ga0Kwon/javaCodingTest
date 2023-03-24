@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import static java.lang.Math.sqrt;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -10,15 +11,16 @@ public class Main {
         StringBuilder sb = new StringBuilder();
         br.close();
 
-        if(N == 1){
-            return;
-        }
-
-        for(int i = 2; i <= N; i++){
+        //sqrt 메소드는 파라미터의 양의 제곱근을 반환
+        for(int i = 2; i <= sqrt(N); i++){ //1을 제외하고
             while(N%i == 0){
                 N /= i;
                 sb.append(i + "\n");
             }
+        }
+
+        if(N != 1){
+            sb.append(N);
         }
         System.out.println(sb);
     }
