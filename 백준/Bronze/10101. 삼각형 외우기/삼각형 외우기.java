@@ -1,43 +1,37 @@
 import java.io.*;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        
+        ArrayList<Integer> angle = new ArrayList<>();
 
-        int angle[] = new int[3]; //각도를 저장하는 배열
-        int wholeangle = 0;
+        angle.add(Integer.parseInt(br.readLine()));
+        angle.add(Integer.parseInt(br.readLine()));
+        angle.add(Integer.parseInt(br.readLine()));
 
-        for(int i = 0; i < 3; i++){
-            angle[i] = Integer.parseInt(br.readLine());
-            wholeangle += angle[i];
-        }
         br.close();
 
-        if(wholeangle != 180){
-            bw.write("Error");
-        }else{
-            int[] distinct = removeDuplicate(angle);
+        if((angle.get(0) + angle.get(1) + angle.get(2))== 180){ //세각이 180일 경우
 
-            if(distinct.length == 1){
+            HashSet data = new HashSet(angle);
+
+            if(data.size() == 1){
                 bw.write("Equilateral");
-            }else if(distinct.length == 2){
+            }else if(data.size() == 2){
                 bw.write("Isosceles");
-            }else if(distinct.length == 3){
+            }else if(data.size() == 3){
                 bw.write("Scalene");
             }
-        }
 
+        }else{ //세각이 180아닌 경우
+            bw.write("Error");
+        }
         bw.flush();
         bw.close();
 
-    }
-
-    public static int[] removeDuplicate(int[] arr) {
-        //받은 배열을 크기만큼 반복문을 돌림(forEach) = Stream()
-        // distinct() 메소드는 스트림에서 중복되는 요소들을 모두 제거해주고 새로운 스트림을 반환
-        //  List 컨테이너의 인스턴스를 배열(array)로 만드는것이 'toArray' 메서드
-        return Arrays.stream(arr).distinct().toArray();
     }
 }
