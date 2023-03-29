@@ -1,5 +1,4 @@
 import java.io.*;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -7,29 +6,26 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-
         while(true) {
             StringTokenizer token = new StringTokenizer(br.readLine());
+            
+            //배열이 아닌 int형 변수 선언
+            int a = Integer.parseInt(token.nextToken());
+            int b = Integer.parseInt(token.nextToken());
+            int c = Integer.parseInt(token.nextToken());
 
-            int [] array = {Integer.parseInt(token.nextToken()), Integer.parseInt(token.nextToken()), Integer.parseInt(token.nextToken())};
-
-            if(array[0] == 0&& array[1] == 0 && array[2] == 0){
+            if(a == 0&& b == 0 && c == 0){
                 break;
             }
 
-            Arrays.sort(array); //작은 수부터 큰 수로 정렬
-
-            if(array[2] >= array[0] + array[1]){ // 가장 긴변의 길이가 나머지 두변길이의 합보단 작아야함.
+            if((a >= b+ c) || (b >= a+ c) || (c >= a+ b)){ //삼각형에 부합하지 않을 경우
                 bw.write("Invalid\n");
-            }else {
-                int [] disArray =  Arrays.stream(array).distinct().toArray();
-                if(disArray.length == 1){
-                    bw.write("Equilateral\n");
-                }else if(disArray.length == 2){
-                    bw.write("Isosceles\n");
-                }else if(disArray.length == 3){
-                    bw.write("Scalene\n");
-                }
+            }else if(a ==b && b == c){ //세변이 같을 경우
+                bw.write("Equilateral\n");
+            }else if((a == b) || (a == c) || (b == c)){ //두변이 같을 경우
+                bw.write("Isosceles\n");
+            }else if((a != b) && (b != c) && (c != a)){ //세변이 전부 다를 경우
+                bw.write("Scalene\n");
             }
         }
         br.close();
