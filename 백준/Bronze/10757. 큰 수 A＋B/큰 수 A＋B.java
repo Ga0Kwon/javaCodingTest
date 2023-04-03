@@ -1,19 +1,43 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.math.BigDecimal;
 import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        BufferedReader br  = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
         StringTokenizer st = new StringTokenizer(br.readLine());
+        StringBuilder sb = new StringBuilder();
         br.close();
 
-        //(0 < A,B < 10^10000) : 자료형 BigDecimal 을 사용
+        String A = st.nextToken();
+        String B = st.nextToken();
 
-        //BigDecimal는 숫자를 정밀하게 저장하표현할 수 있는 객체
-        //단점 :  느린 속도 & 복잡한 사용법
-        System.out.println((new BigDecimal(st.nextToken()).add(new BigDecimal(st.nextToken())))); //A+B식으로 하지 못한다. add() 메서드를 사용해야함
+        int flag = 0;
+
+
+        for(int i = A.length()-1, j = B.length()-1; i >= 0 || j >= 0; i--, j--){
+            int num = flag;
+
+            if(i >= 0) num += A.charAt(i) - '0';
+
+            if(j >= 0) num += B.charAt(j) - '0';
+
+            if(num < 10){
+                flag = 0;
+            }else{
+                flag = 1;
+                num -= 10;
+            }
+
+            sb.append(num);
+        }
+
+        if(flag == 1){
+            sb.append(1);
+        }
+
+        System.out.println(sb.reverse());
     }
 }
