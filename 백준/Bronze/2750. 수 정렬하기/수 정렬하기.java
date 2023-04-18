@@ -1,5 +1,6 @@
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class Main {
@@ -18,10 +19,10 @@ public class Main {
         }
         br.close();
 
-        int[] sortedNumber = Arrays.stream(numnbers).sorted().toArray();
+        Arrays.sort(numnbers);
 
         for(int i = 0; i < N; i++){
-            bw.write(sortedNumber[i] + "\n");
+            bw.write(numnbers[i] + "\n");
         }
 
         bw.flush();
