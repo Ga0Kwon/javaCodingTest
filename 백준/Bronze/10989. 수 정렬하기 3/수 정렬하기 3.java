@@ -17,6 +17,7 @@ public class Main {
         for(int i = 0; i < N; i++){
             arrays[Integer.parseInt(br.readLine())]++; //해당 입력받은 값을 인덱스로 갖는 요소의 값을 증가시킴
         }
+        br.close();
 
         for(int i = 0; i < 10001; i++){
             while(arrays[i] > 0){ //0보다 크면 ++한것이므로 입력받은 숫자에 속한다는 뜻
