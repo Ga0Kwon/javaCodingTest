@@ -7,24 +7,25 @@ public class Main {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int A = Integer.parseInt(st.nextToken()); //A 집합 요소 개수
-        int B = Integer.parseInt(st.nextToken()); //B 집합 요소 개수
+        int A = Integer.parseInt(st.nextToken());
+        int B = Integer.parseInt(st.nextToken());
 
-        //중복을 알아서 제거해줌
-        HashSet<Integer> Elements = new HashSet<Integer>(); //요소들을 저장할 공간
+        HashSet<Integer> Elements = new HashSet<Integer>();
 
-        st = new StringTokenizer(br.readLine()); //A의 요소를 받음
+        st = new StringTokenizer(br.readLine());
         
         for(int i = 0; i < A; i++) {
             Elements.add(Integer.parseInt(st.nextToken()));
         }
 
-        st = new StringTokenizer(br.readLine()); //B의 요소를 받음
+        st = new StringTokenizer(br.readLine());
         for(int i = 0; i < B; i++) {
             Elements.add(Integer.parseInt(st.nextToken()));
         }
+        br.close();
 
-        System.out.println((Elements.size() - B) + (Elements.size() - A));
-
+        bw.write((Elements.size() - B) + (Elements.size() - A) + "");
+        bw.flush();
+        bw.close();
     }
 }
