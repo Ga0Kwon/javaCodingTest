@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Main {
 
-    static ArrayDeque<Integer> queue = new ArrayDeque<>(); //큐(덱)
+    static LinkedList<Integer> queue = new LinkedList<>(); //큐(덱)
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -55,14 +55,14 @@ public class Main {
         if(empty() == 1){
             return -1;
         }
-        return queue.pollFirst(); //가장 앞 인덱스 요소 뽑기
+        return queue.removeFirst(); //가장 앞 인덱스 요소 뽑기
     }
     //pop_back 명령어
     static int pop_back(){
         if(empty() == 1){
             return -1;
         }
-        return queue.pollLast(); //마지막 인덱스 요소 뽑기
+        return queue.removeLast(); //마지막 인덱스 요소 뽑기
     }
     //size 명령어
     static int size(){
