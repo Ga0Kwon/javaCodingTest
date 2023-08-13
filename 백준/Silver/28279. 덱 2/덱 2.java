@@ -1,0 +1,84 @@
+import java.io.*;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.StringTokenizer;
+
+
+public class Main {
+    static StringBuilder sb = new StringBuilder();
+    static Deque<Integer> deque = new LinkedList<>();
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
+
+        int N = Integer.parseInt(br.readLine()); //명령어의 수
+
+        while(N --> 0) {
+            st = new StringTokenizer(br.readLine());
+            String order = st.nextToken();
+
+            //명령어 1 X : 덱의 앞에 넣는다
+            if (order.equals("1")) {
+                frontPush(Integer.parseInt(st.nextToken()));
+            } else if (order.equals("2")) {//명령어 2 X : 덱의 뒤에 넣는다
+                backPush(Integer.parseInt(st.nextToken()));
+            } else if (order.equals("3")) {//명령어 3 : 덱의 맨 앞의 정수를 빼서 출력한다.(없다면 -1)
+                frontPop();
+            } else if (order.equals("4")) {//명령어 4 : 덱의 맨 뒤의 정수를 빼서 출력한다.(없다면 -1)
+                backPop();
+            } else if (order.equals("5")) {//명령어 5 : 덱에 들어있는 정수의 개수 출력
+                dequeSize();
+            } else if (order.equals("6")) {//명령어 6 : 덱이 비어있으면 1 출력 비어있지 않으면 0
+                dequeEmpty();
+            } else if (order.equals("7")) {//명령어 7 : 덱에 정수가 있다면 맨 앞의 정수를 출력(없다면 -1)
+                getFront();
+            } else if (order.equals("8")) {//명령어 8 : 덱에 정수가 있다면 맨 뒤의 정수를 출력(없다면 -1)
+                getBack();
+            }
+        }
+        br.close();
+        System.out.println(sb);
+    }
+    static void frontPush(int element){ //명령어 1 X
+        deque.addFirst(element);
+    }
+    static void backPush(int element){ //명령어 2 X
+        deque.addLast(element);
+    }
+    static void frontPop(){ //명령어 3
+        if(deque.isEmpty()){
+            sb.append("-1").append("\n");
+            return;
+        }
+        sb.append(deque.pollFirst()).append("\n");
+    }
+    static void backPop(){ //명령어 4
+        if(deque.isEmpty()){
+            sb.append("-1").append("\n");
+            return;
+        }
+        sb.append(deque.pollLast()).append("\n");
+    }
+    static void dequeSize(){ //명령어 5
+        sb.append(deque.size()).append("\n");
+    }
+    static void dequeEmpty(){ //명령어 6
+        sb.append(deque.isEmpty()? 1 : 0).append("\n");
+    }
+    static void getFront(){ //명령어 7
+        if(deque.isEmpty()){
+            sb.append("-1").append("\n");
+            return;
+        }
+        sb.append(deque.peekFirst()).append("\n");
+    }
+    static void getBack(){ //명령어 8
+        if(deque.isEmpty()){
+            sb.append("-1").append("\n");
+            return;
+        }
+        sb.append(deque.peekLast()).append("\n");
+    }
+}
+        
