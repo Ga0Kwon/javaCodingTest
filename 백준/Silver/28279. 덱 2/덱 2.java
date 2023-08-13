@@ -1,12 +1,12 @@
 import java.io.*;
+import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.LinkedList;
 import java.util.StringTokenizer;
 
 
 public class Main {
     static StringBuilder sb = new StringBuilder();
-    static Deque<Integer> deque = new LinkedList<>();
+    static Deque<Integer> deque = new ArrayDeque<>();
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
