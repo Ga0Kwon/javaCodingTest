@@ -20,73 +20,34 @@ public class Main {
 
             switch (order){
                 case 1 : //명령어 1 X : 덱의 앞에 넣는다
-                    frontPush(Integer.parseInt(st.nextToken()));
+                    deque.addFirst(Integer.parseInt(st.nextToken()));
                     break;
                 case 2 : //명령어 2 X : 덱의 뒤에 넣는다
-                    backPush(Integer.parseInt(st.nextToken()));
+                    deque.addLast(Integer.parseInt(st.nextToken()));
                     break;
                 case 3 : //명령어 3 : 덱의 맨 앞의 정수를 빼서 출력한다.(없다면 -1)
-                    frontPop();
+                    sb.append(deque.isEmpty()? -1 : deque.pollFirst()).append("\n");
                     break;
                 case 4 : //명령어 4 : 덱의 맨 뒤의 정수를 빼서 출력한다.(없다면 -1)
-                    backPop();
+                    sb.append(deque.isEmpty()? -1 : deque.pollLast()).append("\n");
                     break;
                 case 5 : //명령어 5 : 덱에 들어있는 정수의 개수 출력
-                    dequeSize();
+                    sb.append(deque.size()).append("\n");
                     break;
                 case 6 : //명령어 6 : 덱이 비어있으면 1 출력 비어있지 않으면 0
-                    dequeEmpty();
+                    sb.append(deque.isEmpty()? 1 : 0).append("\n");
                     break;
                 case 7 : //명령어 7 : 덱에 정수가 있다면 맨 앞의 정수를 출력(없다면 -1)
-                    getFront();
+                    sb.append(deque.isEmpty()? -1 :deque.peekFirst()).append("\n");
                     break;
                 case 8 : //명령어 8 : 덱에 정수가 있다면 맨 뒤의 정수를 출력(없다면 -1)
-                    getBack();
+                    sb.append(deque.isEmpty()? -1 : deque.peekLast()).append("\n");
                     break;
             }
         }
         br.close();
         System.out.println(sb);
     }
-    static void frontPush(int element){ //명령어 1 X
-        deque.addFirst(element);
-    }
-    static void backPush(int element){ //명령어 2 X
-        deque.addLast(element);
-    }
-    static void frontPop(){ //명령어 3
-        if(deque.isEmpty()){
-            sb.append("-1").append("\n");
-            return;
-        }
-        sb.append(deque.pollFirst()).append("\n");
-    }
-    static void backPop(){ //명령어 4
-        if(deque.isEmpty()){
-            sb.append("-1").append("\n");
-            return;
-        }
-        sb.append(deque.pollLast()).append("\n");
-    }
-    static void dequeSize(){ //명령어 5
-        sb.append(deque.size()).append("\n");
-    }
-    static void dequeEmpty(){ //명령어 6
-        sb.append(deque.isEmpty()? 1 : 0).append("\n");
-    }
-    static void getFront(){ //명령어 7
-        if(deque.isEmpty()){
-            sb.append("-1").append("\n");
-            return;
-        }
-        sb.append(deque.peekFirst()).append("\n");
-    }
-    static void getBack(){ //명령어 8
-        if(deque.isEmpty()){
-            sb.append("-1").append("\n");
-            return;
-        }
-        sb.append(deque.peekLast()).append("\n");
-    }
+
 }
         
