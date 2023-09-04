@@ -1,5 +1,4 @@
 import java.io.*;
-import java.util.Stack;
 
 public class Main {
     static StringBuilder sb;
@@ -23,26 +22,7 @@ public class Main {
             sb.append(start + " " + to + "\n");
             return;
         }
-
-        /*
-         hanoi(N, start, tmp, to);
-
-         원판이 3이라고 가정하면,
-         (1)-1 hanoi(2, 1, 3, 2);
-            (1)-2 hanoi(1, 1, 2, 3);
-               ** if N=1 print("1 3")
-            (2)-2 ** print("1 2");
-            (3)-2 hanoi(1, 3, 1, 2);
-                if N = 1 ** print("3 2");
-         (2)-1 ** print("1 3");
-         (3)-1 hanoi(2, 2, 1, 3);
-            (1)-2 hanoi(1, 2, 3, 1);
-                if N = 1 ** print("2 1");
-            (2)-2 ** print("2 3");
-            (3)-2 hanoi(1, 1, 2, 3);
-                if N = 1 ** print("1 3");
-        */
-
+        
         // start -> to로 옮긴다고 가정하면
         //(1) N-1까지는 tmp로 옮긴다.(start에 있는 요소들)
         hanoi(N-1, start, to, tmp);
