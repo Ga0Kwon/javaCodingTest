@@ -11,6 +11,7 @@ public class Main {
         sb.append((int) (Math.pow(2, N)-1)).append("\n");
         hanoi(N, 1, 2, 3);
 
+        br.close();
         System.out.println(sb);
     }
 
@@ -22,7 +23,7 @@ public class Main {
             sb.append(start + " " + to + "\n");
             return;
         }
-        
+
         // start -> to로 옮긴다고 가정하면
         //(1) N-1까지는 tmp로 옮긴다.(start에 있는 요소들)
         hanoi(N-1, start, to, tmp);
