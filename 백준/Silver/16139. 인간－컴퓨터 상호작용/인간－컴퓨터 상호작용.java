@@ -10,26 +10,34 @@ public class Main {
         String S = br.readLine(); // 주어진 문자열
         int N = Integer.parseInt(br.readLine()); //질문의 수
 
-        while(N --> 0) { //질문 개수만큼 반복
-            st = new StringTokenizer(br.readLine());
-            char findChar = st.nextToken().charAt(0); //찾으려는 문자
-            int start = Integer.parseInt(st.nextToken()); //찾으려는 범위의 시작점
-            int end = Integer.parseInt(st.nextToken()); //찾으려는 범위의 끝점
+        int[][] alpha = new int[S.length()+1][26]; //[주어진 문자열의 인덱스][해당 알파벳의 인덱스]
 
-            int count = 0; //찾으려는 문자가 범위 내에 몇개 있는지 카운트하는 변수
+        //나머지 문자 탐색
+        for(int i = 1;i<= S.length();i++) {
+            //탐색 중인 문자
+            int searchChar = S.charAt(i-1)-'a';
 
-            if(S.indexOf(findChar) >= 0){ //만약 찾으려는 문자가 포함되어 있으면 (문자열에)
-                for(int i = start; i <= end; i++){
-                    if(findChar == S.charAt(i)){ //만약 찾으려는 문자이면
-                        count++; //카운트 + 1
-                    }
-                }
+            //알파벳 a부터 z까지 반복
+            for(int j = 0; j < 26; j++) {
+                //현재 탐색중인 문자보다 한단계 앞인 문자의 값(=이전 값)
+                int beforeValue = alpha[i-1][j];
+                //알파벳과 탐색 중인 문자가 같으면 이전값 + 1,다르면 이전값으로 넣음
+                alpha[i][j] = ( j == searchChar ? beforeValue+1 : beforeValue);
             }
-            bw.write(count+"\n");
+        }
+
+        while(N --> 0){
+            st = new StringTokenizer(br.readLine());
+
+            int findIdx = st.nextToken().charAt(0)-'a'; //찾으려는 문자의 인덱스
+            int start = Integer.parseInt(st.nextToken())+1; //시작점
+            int end = Integer.parseInt(st.nextToken())+1; //끝점
+
+            //끝점의 누적합 - 시작점 바로 이전의 누적합 = 구간의 문자 반복값;
+            bw.append((alpha[end][findIdx]-alpha[start-1][findIdx])+"\n");
         }
         br.close();
         bw.flush();
         bw.close();
     }
-
 }
