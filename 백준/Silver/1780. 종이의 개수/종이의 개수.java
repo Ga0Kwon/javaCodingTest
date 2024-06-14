@@ -41,22 +41,15 @@ public class Main {
             }else if(paper[row][col] == 1){ // 그 숫자가 1이면
                 one++;
             }
-        }else{ //분할한 숫자가 모두 같은 숫자로만 이루어져 있지 않을 때
-            int newSize = size/3; //전체 종이 사이즈를 9분할로 해야하기 때문에 3x3으로 하므로 사이즈 3
+        }else { //분할한 숫자가 모두 같은 숫자로만 이루어져 있지 않을 때
+            int newSize = size / 3; //전체 종이 사이즈를 9분할로 해야하기 때문에 3x3으로 하므로 사이즈 3
 
-            cutPaper(row, col, newSize);                                    //가장 위쪽이면서 왼쪽 정사각형
-            cutPaper(row, col+newSize, newSize);                        //가장 위쪽이면서 가운데 정사각형
-            cutPaper(row, col+(newSize*2), newSize);                    //가장 위쪽이면서 오른쪽 정사각형
-
-            cutPaper(row+newSize, col, newSize);                        //가운데이면서 왼쪽 정사각형
-            cutPaper(row+newSize, col+newSize, newSize);            //가운데이면서 가운데 정사각형
-            cutPaper(row+newSize, col+(newSize*2), newSize);        //가운데쪽이면서 오른쪽 정사각형
-
-            cutPaper(row+(newSize*2), col, newSize);                    //가장 아래쪽이면서 왼쪽 정사각형
-            cutPaper(row+(newSize*2), col+newSize, newSize);        //가장 아래쪽이면서 가운데 정사각형
-            cutPaper(row+(newSize*2), col+(newSize*2), newSize);    //가장 아래쪽이면서 오른쪽 정사각형
+            for (int x = 0; x < size; x += newSize) { //분할한 사이즈만큼 증가시켜서 9분할 
+                for (int y = 0; y < size; y += newSize) {
+                    cutPaper(row + x, col + y, newSize);
+                }
+            }
         }
-
     }
 
     //종이의 내부 숫자가 같은 숫자로만 이루어졌는지 비교
