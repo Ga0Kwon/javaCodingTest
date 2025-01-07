@@ -27,8 +27,6 @@ public class Main {
         long min = 0;
         long mid = 0;
 
-        max++;
-
         while (min < max) {
             // 범위 내에서 중간 길이(mid)를 구한다.
             mid = (max + min) / 2;
