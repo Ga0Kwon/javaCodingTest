@@ -11,7 +11,7 @@ public class Main {
         StringTokenizer st = new StringTokenizer(br.readLine());
 
         int N = Integer.parseInt(st.nextToken()); //입력 받을 집의 개수
-        int M = Integer.parseInt(st.nextToken()); //설치할 공유기의 개수
+        int C = Integer.parseInt(st.nextToken()); //설치할 공유기의 개수
 
         home = new int[N]; //입력 받은 집의 위치
 
@@ -31,7 +31,7 @@ public class Main {
             int mid = (max+min)/2; //중간 값
 
             //mid(중간 값)으로 공유기 개수가 M개보다 적으면 거리를 좁힌다.
-            if(getWifiCount(mid) < M){
+            if(getWifiCount(mid) < C){
                 max = mid;
             }else{
                 /*
